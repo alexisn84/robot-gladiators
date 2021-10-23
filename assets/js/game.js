@@ -87,13 +87,25 @@ var startGame = function() {
 shop = function() {
     playerInfo.health = playerInfo.health + 20;
     playerInfo.money = playerInfo.money - 7;
-    switch(shop) {
-    case 'REFILL','refill':
-        playerInfo.refillHealth();
-        break;
-    case "UPGRADE", 'upgrade':
-        playerInfo.upgradeAttack();
-        break;
+    shopOptionPrompt = parseInt(shopOptionPrompt);
+        
+    switch(shopOptionPrompt) {
+        
+        case 1:
+            playerInfo.refillHealth();
+            break;
+        case 2:
+            playerInfo.upgradeAttack();
+            break;
+        case 3:
+            window.alert("Leaving the store.");
+            break;
+        default:
+        var shopOptionPrompt = window.prompt(
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
+        );
+            shop();
+            break;
     }}
 
     var fightOrSkip = function() {
@@ -103,7 +115,7 @@ shop = function() {
     // Conditional Recursive Function Call
     if (promptFight === "" || promptFight === null) {
     window.alert("You need to provide a valid answer! Please try again.");
-    return fightOrSkip();
+    return shop();
     }
 
     // if player picks "skip" confirm and then stop the loop
