@@ -68,13 +68,14 @@ var startGame = function() {
         var pickedEnemyObj = enemyInfo[i];
         pickedEnemyObj.health = randomNumber(40, 60);
         fight(pickedEnemyObj);
+        shop();
 }
 }
 
 shop = function() {
     playerInfo.health = playerInfo.health + 20;
     playerInfo.money = playerInfo.money -7;
-    switch(expr) {
+    switch(shop) {
     case 'REFILL','refill':
         playerInfo.refillHealth();
         break;
