@@ -87,6 +87,10 @@ var startGame = function() {
 shop = function() {
     playerInfo.health = playerInfo.health + 20;
     playerInfo.money = playerInfo.money - 7;
+
+    var shopOptionPrompt = window.prompt(
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
+        );
     shopOptionPrompt = parseInt(shopOptionPrompt);
         
     switch(shopOptionPrompt) {
@@ -101,9 +105,7 @@ shop = function() {
             window.alert("Leaving the store.");
             break;
         default:
-        var shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
-        );
+            window.alert("Wrong option, try again!");
             shop();
             break;
     }}
@@ -129,7 +131,7 @@ shop = function() {
         window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
         // subtract money from playerMoney for skipping, but don't let them go into the negative
         playerInfo.money = Math.max(0, playerInfo.money - 10);
-
+        console.log("Player current cash: ",playerInfo.money);
         // return true if player wants to leave
         return true;
     }
